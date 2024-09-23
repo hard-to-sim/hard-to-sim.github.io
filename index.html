@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="A plug-and-play fine-tuning method to optimize hard-to-simulate objectives for quadruped locomotion.">
+  <meta name="keywords" content="Locomotion, Quadruped Locomotion, Robotic Learning">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fine-Tuning Hard-to-Simulate Objectives for Quadruped Locomotion:<br> A Case Study on Total Power Saving</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <!-- mathjax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Fine-Tuning <span class="hardtosim">Hard-to-Simulate</span> Objectives for Quadruped Locomotion:<br> A Case Study on Total Power Saving 🔋</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?hl=en&user=I0HLZAwAAAAJ">Ruiqian Nai</a><sup>1,2,3</sup>,</span>
+            <span class="author-block">
+              <a href="https://github.com/YouJiacheng">Jiacheng You</a><sup>1,2,3</sup>,</span>
+            <span class="author-block">
+              <a href="https://github.com/xiaohu-art">Liu Cao</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://morning-star-7.github.io/">Hanchen Cui</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              Shiyuan Zhang<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="http://hxu.rocks/">Huazhe Xu</a><sup>1,2,3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://yang-gao.weebly.com/">Yang Gao</a><sup>1,2,3</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Tsinghua University, </span>
+            <span class="author-block"><sup>2</sup>Shanghai AI Lab, </span>
+            <span class="author-block"><sup>3</sup>Shanghai Qi Zhi Institute</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="./static/root.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/abs/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://youtu.be/HTdSFdZfzUI"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="static/videos/teaser-iterative.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        Our method fine-tunes <span class="hardtosim">hard-to-simulate</span> objectives through iteratively <span style="color: #BEBAA8; font-weight: bold;">real data collection</span> and <span style="color: #76787C; font-weight: bold;">simulation policy updates</span>.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Legged locomotion is not just about mobility; it also encompasses crucial objectives such as energy efficiency, safety, and user experience, which are vital for real-world applications. However, key factors such as battery power consumption and stepping noise are often inaccurately modeled or missing in common simulators, leaving these aspects poorly optimized or unaddressed by current sim-to-real methods. Hand-designed proxies, such as mechanical power and foot contact forces, have been used to address these challenges but are often problem-specific and inaccurate. 
+          </p>
+          <p>
+            In this paper, we propose a data-driven framework for fine-tuning locomotion policies, targeting these hard-to-simulate objectives. Our framework leverages real-world data to model these objectives and incorporates the learned model into simulation for policy improvement. We demonstrate the effectiveness of our framework on power saving for quadruped locomotion, achieving a significant 24-28% net reduction in total power consumption from the battery pack at various speeds. In essence, our approach offers a versatile solution for optimizing hard-to-simulate objectives in quadruped locomotion, providing an easy-to-adapt paradigm for continual improving with real-world knowledge. 
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/HTdSFdZfzUI?si=L9F363fUl-2gQaSq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">
+        Case Study: <span style="color: black">Total Power Saving  </span>
+      </h2>
+      <div class="subtitle is-5 has-text-centered">
+        To minimize <span style="color: green; font-weight: bold;">power consumption from the battery pack <i class="fas fa-car-battery"></i></span> while <span style="color: gray; font-weight: bold;">maintaining the desired speed <i class="fas fa-dog"></i></span>.
+      </div>
+      <div class="content has-text-justified">
+        <p>
+          <b>Motivation:</b> Current popular low-cost quadruped robots suffer from limited battery life per charge<sup><a href="https://robozaps.com/unitree-go1-review/">1</a>, <a href="https://toolkittech.com/shop/unitree-quadruped-robot/">2</a>, <a href="https://robostore.com/products/go2-pro-ai-quadruped-robot-dog">3</a>, <a href="https://robotsguide.com/robots/minicheetah">4</a></sup>. However, the complex dynamics of <a href="https://www.mathworks.com/help/sps/ref/pmsm.html">Permanent Magnet Synchronous Motors</a> and advanced control strategies like <a href="https://www.mathworks.com/help/mcb/gs/implement-motor-speed-control-by-using-field-oriented-control-foc.html">Field-Oriented Control</a> make total power consumption <span class="hardtosim">hard-to-simulate</span>.
+        </p>
+        <p>
+          <b>Baseline:</b> Traditionally, power saving relies on hand-designed proxies that represent <i>analytical</i> power consumption, including mechanical power and Joule heating. 
+        </p>
+        <p>
+          <b>Metric:</b> Power reduction after fine-tuning compared to the pre-trained policy.
+        </p>
+        <ul>
+          <li>
+            <b>Gross power:</b> The power directly drawn from the battery pack.
+          </li>
+          <li>
+            <b>Net power:</b> The gross power minus the power measured when all motors are idle.
+          </li>
+        </ul>
+      </div>
+      <div class="columns is-centered ">
+        <div class="column">
+          <h2 class="title is-4">Final Power Reduction</h2>
+          <div class="content has-text-justified">
+            <p>
+              Our method achieves significant net (gross) power reduction at various speeds, while fine-tuning with analytical proxies only shows a minor improvement.
+            </p>
+          </div>
+            <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+            <thead>
+              <tr>
+              <th></th>
+              <th>Analytical proxy</th>
+              <th>Data-driven proxy (ours)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+              <td>v = 0.5 m/s</td>
+              <td>11.8% (8.3%)</td>
+              <td><strong>28.4% (19.6%)</strong></td>
+              </tr>
+              <tr>
+              <td>v = 0.8 m/s</td>
+              <td>6.2% (4.5%)</td>
+              <td><strong>27.0% (20.3%)</strong></td>
+              </tr>
+              <tr>
+              <td>v = 1.1 m/s</td>
+              <td>5.0% (3.9%)</td>
+              <td><strong>24.2% (19.4%)</strong></td>
+              </tr>
+            </tbody>
+            </table>
+            <div class="content is-small has-text-justified">
+                The number in the parentheses is the gross power reduction.
+            </div>
+        </div>
+        <div class="column">
+          <h2 class="title is-4">Power Distribution </h2>
+          <div class="content has-text-justified">
+            <p>
+              Our method consistently reduces power consumption, while the baseline occasionally increases power usage above pre-fine-tuning levels (normalized power > 1). 
+            </p>
+          </div>
+          <figure>
+            <img src="static/images/power_dist.svg" alt="power distribution" style="width: 100%;">
+          </figure>
+          <div class="content is-small has-text-justified">
+            Each point represents the net power consumption of a 1-second segment within the test run. We normalize the power with respect to the pre-trained policy: \(\frac{P^\text{fine-tuned}}{\operatorname{Mean}(P^\text{pre-trained})}\).
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>
+            The template is borrowed from <a
+            href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
