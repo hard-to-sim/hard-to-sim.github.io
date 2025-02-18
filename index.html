@@ -94,15 +94,15 @@
                   <span>Paper</span>
                 </a>
               </span>
-              <!-- <span class="link-block">
-                <a href="https://arxiv.org/abs/2011.12948"
+              <span class="link-block">
+                <a href="http://arxiv.org/abs/2502.10956"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
                   </span>
                   <span>arXiv</span>
                 </a>
-              </span> -->
+              </span>
               <!-- Video Link. -->
               <span class="link-block">
                 <a href="https://youtu.be/HTdSFdZfzUI"
@@ -185,6 +185,9 @@
           <b>Baseline:</b> Traditionally, power saving relies on hand-designed proxies that represent <i>analytical</i> power consumption, including mechanical power and Joule heating. 
         </p>
         <p>
+            <b>Ours:</b> We present a <i>data-driven</i> proxy that leverages an LSTM-based measurement model trained on real-world data to accurately predict the robot's power consumption.
+        </p>
+        <p>
           <b>Metric:</b> Power reduction after fine-tuning compared to the pre-trained policy.
         </p>
         <ul>
@@ -238,7 +241,7 @@
           <h2 class="title is-4">Power Distribution </h2>
           <div class="content has-text-justified">
             <p>
-              Our method consistently reduces power consumption, while the baseline occasionally increases power usage above pre-fine-tuning levels (normalized power > 1). 
+                Our approach reliably reduces power consumption, whereas the baseline exhibits greater variability and can sometimes lead to higher power usage (with normalized power > 1).
             </p>
           </div>
           <figure>
@@ -249,7 +252,29 @@
           </div>
         </div>
       </div>
-    </div>
+      <hr class="solid">
+      <div class="content has-text-justified">
+        <h2 class="title is-4 has-text-centered" ><span style="color: rgb(38, 141, 220)">In-the-Wild</span> Evaluation</h2>
+        <p>
+            To better mirror practical scenarios, we conducted long-distance evaluations both indoors and outdoors. The plot below illustrates the battery's state of charge (SoC) relative to the distance traveled, underscoring how our approach effectively extends the robot's operational range.
+        </p>
+      </div>
+      <div class="columns is-centered">
+        <div class="column">
+          <h2 class="title is-4">Indoor Evaluation</h2>
+          <video id="indoor-longrun" autoplay playsinline controls muted loop height="100%">
+            <source src="static/videos/indoor-longrun.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="column">
+          <h2 class="title is-4">Outdoor Evaluation</h2>
+          <video id="outdoor-longrun"autoplay playsinline controls muted loop height="100%">
+            <source src="static/videos/outdoor-longrun.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
 </section>
 
 
